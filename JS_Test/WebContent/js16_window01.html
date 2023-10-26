@@ -3,13 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	#regist{
+		border: 1px solid black;
+		background: pink;
+		position: absolute;
+		top:200px;
+		left:400px;
+		display:none;
+	}
+</style>
 <script type="text/javascript">
 	function openWin() {
 		let url = "js16_window02.html";
 		let target = "_blank";
 		let prop = "width=500px, height=500px";
 		window.open(url,target,prop);
-	}	
+	}	w
+	function registForm() {
+		//숨겨둔 회원가입 창을 보이게하자
+		document.getElementById("regist").style.display = "block";
+		document.body.style.background= "gray";
+		
+		let btns = document.getElementsByName("btn");
+		for(let i=0; i<btns.length; i++){
+			btns[i].disabled = "disabled";
+		}
+	}
+	function idchk(){
+		alert("중복체크를 확인하세요");
+	}
+	function idCheck(){
+		window.open("js16_window03.html","","width=300px,height=300px");
+	}
 </script>
 </head>
 <body>
@@ -51,11 +77,12 @@
 				<caption>회원가입</caption>
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id"> <input type="button" value="중복체크"></td>
+					<td><input type="text" name="id" onclick="idchk();" readonly="readonly"> 
+					<input type="button" value="중복체크" onclick="idCheck();"></td>
 				</tr>
 				<tr>
 					<td>패스워드</td>
-					<td><input type="text" name="pwd" style="color:red;"></td>
+					<td><input type="password" name="pwd" style="color:red;"></td>
 				</tr>
 				<tr>
 					<td colspan="2"	align="center"><input type="button" value="확인"></td>
